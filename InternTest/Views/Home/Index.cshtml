@@ -1,0 +1,56 @@
+﻿@model IEnumerable<InternTest.Models.Product>
+@{
+    ViewBag.Title = "Home Page";
+    //Layout = null;
+
+}
+<br />
+<table class="table table-striped table-condensed" id="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Office</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Office</td>
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-12">
+        @{
+            Double page = ViewBag.Totalpage;
+            for (int i = 1; i <= 5; i++)
+            {
+                <ul class="pagination">
+                    <li>
+                        @*<a>@i  </a>*@
+                        @*@Html.ActionLink(i.ToString(), "Index", new { id = i })*@
+                        <a class="btn btn-primary " onclick="pageid('@Url.Action("Indexlight","Home", new { id=i })')">@i</a>
+                    </li>
+                </ul>
+
+            }
+
+        }
+
+    </div>
+</div>
+<hr />
+<footer>
+    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+</footer>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+} 
